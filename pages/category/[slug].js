@@ -26,7 +26,7 @@ const Category = ({ category, menus } = props) => {
   return (
     <Layout  title={`${category.name}`}
     description={`${
-      category.description ? category.description : category.name
+      category?.description ? category?.description : category?.name
     }`} menus={$hierarchicalList}>
       
     <h1 className={categoryStyles.categoryHeader}>{category.name}</h1>
@@ -36,8 +36,8 @@ const Category = ({ category, menus } = props) => {
           const { featuredImage } = post.node;
 
           return (
-            <div className={styles.blogContent} key={post.node.id}>
-              <Link href={`/blog/${post.node.slug}`}>
+            <div className={styles.blogContent} key={post?.node?.id}>
+              <Link href={`/blog/${post?.node?.slug}`}>
                 <a>
                   {featuredImage && (
                     <Image
@@ -53,12 +53,12 @@ const Category = ({ category, menus } = props) => {
                   )}
                 </a>
               </Link>
-              <Link href={`/blog/${post.node.slug}`}>
+              <Link href={`/blog/${post?.node?.slug}`}>
                 <a>
                   <h1>{post.node.title}</h1>
                 </a>
               </Link>
-              <div dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
+              <div dangerouslySetInnerHTML={{ __html: post?.node?.excerpt }} />
             </div>
           );
         })}

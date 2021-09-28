@@ -22,7 +22,7 @@ const Tag = ({ tag, menus } = props) => {
   $hierarchicalList = flatListToHierarchical(menus?.data?.menu?.menuItems?.nodes);
 
   return (
-    <Layout title={`الوسم: ${tag.name}`} description={`${tag.description ? tag.description : tag.name}`} menus={$hierarchicalList}>
+    <Layout title={`الوسم: ${tag?.name}`} description={`${tag?.description ? tag?.description : tag?.name}`} menus={$hierarchicalList}>
       {/* <NextSeo
         title={`${tag.name}`}
         description={`${tag.description ? tag.description : tag.name}`}
@@ -32,11 +32,11 @@ const Tag = ({ tag, menus } = props) => {
 
       <PostsContainer>
         {posts.edges.map((post) => {
-          const { featuredImage } = post.node;
+          const { featuredImage } = post?.node;
 
           return (
             <div className={styles.blogContent} key={post.node.id}>
-              <Link href={`/blog/${post.node.slug}`}>
+              <Link href={`/blog/${post?.node?.slug}`}>
                 <a>
                   {featuredImage && (
                     <Image
@@ -52,12 +52,12 @@ const Tag = ({ tag, menus } = props) => {
                   )}
                 </a>
               </Link>
-              <Link href={`/blog/${post.node.slug}`}>
+              <Link href={`/blog/${post?.node?.slug}`}>
                 <a>
-                  <h1>{post.node.title}</h1>
+                  <h1>{post?.node?.title}</h1>
                 </a>
               </Link>
-              <div dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
+              <div dangerouslySetInnerHTML={{ __html: post?.node?.excerpt }} />
             </div>
           );
         })}
