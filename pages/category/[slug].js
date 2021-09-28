@@ -1,7 +1,6 @@
 import { gql } from "@apollo/client";
 import Image from "next/image";
 import Link from "next/link";
-import { NextSeo } from "next-seo";
 
 import { getCategoryBySlug } from "../../lib/api/getCategoryBySlug";
 import { initializeApollo } from "../../services/apollo";

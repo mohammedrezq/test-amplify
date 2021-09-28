@@ -1,19 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { gql } from "@apollo/client";
-import { NextSeo } from "next-seo";
 
-import { client } from "../../services/apollo";
-import { initializeApollo, addApolloState } from "../../services/apollo";
+import { initializeApollo } from "../../services/apollo";
 import { getPostBySlug } from "../../lib/api/getPostBySlug";
 import styles from "./blog.module.scss";
 
 import { flatListToHierarchical } from "../../lib/utils/menus";
 import { getPrimaryMenu } from "../../lib/api/getMenus";
 import Layout from "../../components/Layout";
-import { style } from "dom-helpers";
 import { getSettings } from "../../lib/api/getSettings";
-import { getPostsByCategoryId } from "../../lib/api/getPostsByCategoryId";
 import { getRelatedPosts } from "../../lib/utils/relatedPosts";
 
 let $hierarchicalList = [];

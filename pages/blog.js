@@ -5,7 +5,6 @@ import { GetStaticPropsContext } from "next";
 
 import Image from "next/image";
 import Link from "next/link";
-import { NextSeo } from "next-seo";
 
 import { initializeApollo, addApolloState } from "../services/apollo";
 import InfiniteScroll from "react-infinite-scroll-component";
