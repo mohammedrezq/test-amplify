@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, forwardRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa";
 
@@ -50,7 +50,6 @@ const Dropdown = (props) => {
                       <button
                         key={index}
                         onClick={() => openSubMenuHandler(index)}
-                        key={index}
                         className={styles.menuItemHasChildrenClosed}
                         title="افتح القائمة - Open menu"
                       >

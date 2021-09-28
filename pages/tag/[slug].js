@@ -3,7 +3,6 @@ import { getTagBySlug } from "../../lib/api/getTagBySlug";
 import { initializeApollo } from "../../services/apollo";
 import Image from "next/image";
 import Link from "next/link";
-import { NextSeo } from "next-seo";
 import PostsContainer from "../../components/PostsContainer";
 
 import styles from "../blog/blog.module.scss";
@@ -16,19 +15,12 @@ let $hierarchicalList = [];
 
 const Tag = ({ tag, menus } = props) => {
   const { posts } = tag;
-  //   console.log(posts);
-  //   console.log(tag);
 
   $hierarchicalList = flatListToHierarchical(menus?.data?.menu?.menuItems?.nodes);
 
   return (
     <Layout title={`الوسم: ${tag?.name}`} description={`${tag?.description ? tag?.description : tag?.name}`} menus={$hierarchicalList}>
-      {/* <NextSeo
-        title={`${tag.name}`}
-        description={`${tag.description ? tag.description : tag.name}`}
-      /> */}
-
-      <h1>هذه المواضيع موسومة بـ"{tag.name}"</h1>
+      <h1>هذه المواضيع موسومة بـ&quot;{tag.name}&quot;</h1>
 
       <PostsContainer>
         {posts.edges.map((post) => {
@@ -40,7 +32,7 @@ const Tag = ({ tag, menus } = props) => {
                 <a>
                   {featuredImage && (
                     <Image
-                      alt={post?.featuredImage?.node?.altText ? post?.featuredImage?.node?.altText : `صورة ل${post.node.title}` }
+                      alt={post?.featuredImage?.node?.altText ? post?.featuredImage?.node?.altText : `image for: ${post.node.title}` }
                       width="350"
                       height="250"
                       layout="responsive"

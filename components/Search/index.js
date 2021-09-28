@@ -24,7 +24,7 @@ export const SearchREST = () => {
 
   useEffect(() => {
     onSubmitHandler();
-  }, [value]);
+  }, [value, onSubmitHandler]);
 
   return (
     <div className={styles.searchContainer}>
