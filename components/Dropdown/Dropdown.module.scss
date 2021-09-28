@@ -1,0 +1,114 @@
+@import "../../styles/variables";
+/* Desktop Menu*/
+
+.navMenu {
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .menuItemHasChildren {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+
+    .menuItemHasChildrenClosed {
+      background-color: inherit;
+      display: flex;
+      border: none;
+      // margin-left: -8px;
+      min-height: 100%;
+      // padding: 5px;
+      // width: 30px;
+      cursor: pointer;
+      align-items: center;
+
+      &:active,
+      &:hover,
+      &:focus {
+        //   border: 1px dashed #000;
+        background-color: darken($yellow, 10%);
+      }
+    }
+  }
+
+  & > li {
+    position: relative;
+    margin: 0 0.25em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .navSubMenuClosed {
+      display: none;
+      width: max-content;
+    }
+
+    .navSubMenu {
+      display: block;
+      width: max-content;
+      left: 8px;
+      top: 77px;
+      z-index: 10;
+      background: lighten($yellow, 20%);
+    }
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: $dark;
+    font-size: 1.1em;
+    padding: 0.5rem 0.2rem;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+}
+
+.navSubMenu {
+  display: none;
+  position: absolute;
+  padding: 0;
+  list-style: none;
+  background-color: $light;
+  padding: 0.5em;
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-left: -0.25em;
+
+  li {
+    a {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.3em;
+      color: $dark;
+
+      @media (hover: hover) {
+        &:hover {
+          color: rgb(201, 201, 201);
+        }
+      }
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
