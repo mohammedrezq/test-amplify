@@ -14,13 +14,13 @@ export const SearchREST = () => {
     e.preventDefault();
     setValue(e.target.value);
   };
-  const onSubmitHandler = async (e) => {
+  const onSubmitHandler = useCallback(async (e) => {
     let response = await fetch(
       `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_SEARCH_REST}?search=${value}`
     );
     response = await response.json();
     setPosts(response);
-  };
+  },[]);
 
   useEffect(() => {
     onSubmitHandler();
