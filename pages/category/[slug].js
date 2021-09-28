@@ -20,7 +20,7 @@ const Category = ({ category, menus } = props) => {
   const { posts } = category;
 
   // console.log(menus);
-  $hierarchicalList = flatListToHierarchical(menus.data.menu.menuItems.nodes);
+  $hierarchicalList = flatListToHierarchical(menus?.data?.menu?.menuItems?.nodes);
 
   //   console.log(posts);
   return (
