@@ -1,7 +1,4 @@
 import { useQuery } from "@apollo/client";
-import { GetStaticPropsContext } from "next";
-
-// import { client } from "../services/apollo";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +12,7 @@ import { flatListToHierarchical } from "../lib/utils/menus";
 import PostsContainer from "../components/PostsContainer";
 import styles from "./blog.module.scss";
 import Layout from "../components/Layout";
-import SkeletonComponent from "../components/Skeleton/Skeleton";
+
 import SkeletonContent from "../components/SkeletonContent/SkeletonContent";
 import { getSettings } from "../lib/api/getSettings";
 
@@ -37,17 +34,10 @@ const Blog2 = ({ menus, settings } = porps) => {
     notifyOnNetworkStatusChange: true,
   });
   const { posts } = data;
-  // const posts = data?.posts?.map((post) => edge.node) || [];
   const havePosts = Boolean(posts.edges.length);
   const haveMorePosts = Boolean(data?.posts?.pageInfo?.hasNextPage);
 
-  // console.log(data);
-  // console.log(posts);
-  // console.log(havePosts);
-  // console.log(posts.edges.length);
-  // console.log(error);
-  // console.log(haveMorePosts);
-  // console.log(loading);
+
 
   const fetchMorePosts = () => {
     fetchMore({
