@@ -36,10 +36,11 @@ const Post = ({ post, menus, settings, relatedPosts } = props) => {
 
   return (
     <Layout
-      title={`${title} - ${allSettings.generalSettingsTitle}`}
-      description={title}
+      title={ post?.seo?.title? post?.seo?.title : `${title} - ${allSettings.generalSettingsTitle}`}
+      description={post?.seo?.metaDesc ? post?.seo?.metaDesc : title}
       sitename={allSettings.generalSettingsTitle}
       url={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/blog/${post.slug}`}
+      twitterImage={post?.seo?.twitterImage?.sourceUrl ? post?.seo?.twitterImage?.sourceUrl : featuredImage?.node?.sourceUrl}
       type={`article`}
       menus={$hierarchicalList}
     >
