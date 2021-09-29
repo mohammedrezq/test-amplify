@@ -18,10 +18,8 @@ let $hierarchicalList = [];
 const Category = ({ category, menus } = props) => {
   const { posts } = category;
 
-  // console.log(menus);
   $hierarchicalList = flatListToHierarchical(menus?.data?.menu?.menuItems?.nodes);
 
-  //   console.log(posts);
   return (
     <Layout  title={`${category.name}`}
     description={`${
@@ -115,6 +113,6 @@ export const getStaticProps = async (context) => {
       category: data?.category,
       menus: menusData,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 };

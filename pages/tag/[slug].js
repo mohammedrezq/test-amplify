@@ -107,6 +107,6 @@ export const getStaticProps = async (context) => {
       tag: data?.tag,
       menus: menusData,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 };

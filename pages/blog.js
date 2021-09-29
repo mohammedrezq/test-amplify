@@ -168,18 +168,6 @@ export async function getStaticProps(context) {
       menus: data,
       settings,
     },
-    revalidate: 10,
+    revalidate: 60,
   });
 }
-
-// export async function getStaticProps() {
-//   const data = await client.query({
-//     query: getAllPostsQuery,
-//   });
-
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }

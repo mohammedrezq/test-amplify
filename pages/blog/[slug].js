@@ -30,14 +30,6 @@ const Post = ({ post, menus, settings, relatedPosts } = props) => {
   $hierarchicalList = flatListToHierarchical(menus?.data?.menu?.menuItems?.nodes);
 
   return (
-  //   <Layout
-  //   title={allSettings.generalSettingsTitle}
-  //   description={allSettings.generalSettingsDescription}
-  //   sitename={allSettings.generalSettingsTitle}
-  //   url={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/blog`}
-  //   type={`website`}
-  //   menus={$hierarchicalList}
-  // >
     <Layout
       title={`${title} - ${allSettings.generalSettingsTitle}`}
       description={title}
@@ -50,7 +42,7 @@ const Post = ({ post, menus, settings, relatedPosts } = props) => {
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
         {featuredImage && (
           <Image
-            alt={post?.featuredImage?.node?.altText ? post?.featuredImage?.node?.altText : `صورة ل${title}` }
+            alt={post?.featuredImage?.node?.altText ? post?.featuredImage?.node?.altText : `ـ صورة لـ Image For ${title}` }
             width="350"
             height="250"
             layout="responsive"
@@ -225,6 +217,6 @@ export async function getStaticProps(context) {
         posts: await getRelatedPosts(category, postId),
       },
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 }
