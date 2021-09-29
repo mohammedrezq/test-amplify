@@ -23,18 +23,24 @@ const Post = ({ post, menus, settings, relatedPosts } = props) => {
   const { tags } = post;
   const { categories } = post;
 
+  const postModifiedDate = post.modified;
+  const postDate = postModifiedDate.split("T")[0];
+
   const {
     data: { allSettings },
   } = settings;
 
-  $hierarchicalList = flatListToHierarchical(menus?.data?.menu?.menuItems?.nodes);
+  $hierarchicalList = flatListToHierarchical(
+    menus?.data?.menu?.menuItems?.nodes
+  );
 
   return (
     <Layout
-      title={`${title} - ${allSettings.generalSettingsTitle}`}
-      description={title}
+      title={ post?.seo?.title? post?.seo?.title : `${title} - ${allSettings.generalSettingsTitle}`}
+      description={post?.seo?.metaDesc ? post?.seo?.metaDesc : title}
       sitename={allSettings.generalSettingsTitle}
       url={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/blog/${post.slug}`}
+      twitterImage={post?.seo?.twitterImage?.sourceUrl ? post?.seo?.twitterImage?.sourceUrl : featuredImage?.node?.sourceUrl}
       type={`article`}
       menus={$hierarchicalList}
     >
@@ -42,7 +48,11 @@ const Post = ({ post, menus, settings, relatedPosts } = props) => {
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
         {featuredImage && (
           <Image
-            alt={post?.featuredImage?.node?.altText ? post?.featuredImage?.node?.altText : `ـ صورة لـ Image For ${title}` }
+            alt={
+              post?.featuredImage?.node?.altText
+                ? post?.featuredImage?.node?.altText
+                : `ـ صورة لـ Image For ${title}`
+            }
             width="350"
             height="250"
             layout="responsive"
@@ -52,20 +62,26 @@ const Post = ({ post, menus, settings, relatedPosts } = props) => {
             loading="lazy"
           />
         )}
-        <div className={styles.categoryContainer}>
-          {categories.edges &&
-            categories.edges.map((cat, index) => {
-              return [
-                index ? " . " : " ",
-                <div className={styles.postCategories} key={cat.node.id}>
-                  <Link href={`/category/${cat.node.slug}`} passHref>
-                    <a>
-                      <div>{cat.node.name}</div>
-                    </a>
-                  </Link>
-                </div>,
-              ];
-            })}
+        <div className={styles.postHeader}>
+          <div className={styles.categoryContainer}>
+            {categories.edges &&
+              categories.edges.map((cat, index) => {
+                return [
+                  index ? " . " : " ",
+                  <div className={styles.postCategories} key={cat.node.id}>
+                    <Link href={`/category/${cat.node.slug}`} passHref>
+                      <a>
+                        <div>{cat.node.name}</div>
+                      </a>
+                    </Link>
+                  </div>,
+                ];
+              })}
+          </div>
+          <div className={styles.dateContainer}>
+            آخر تحديث: 
+            <span>{postDate}</span>
+          </div>
         </div>
         <div
           className={styles.blogPostEditorContent}
@@ -102,16 +118,22 @@ const Post = ({ post, menus, settings, relatedPosts } = props) => {
                     <Link href={`/blog/${post.slug}`} passHref>
                       <a>
                         <div className={styles.relatedPostImage}>
-                          {post?.featuredImage && <Image
-                            alt={post?.featuredImage?.node?.altText ? post?.featuredImage?.node?.altText : `صورة ل${post.title}` }
-                            width="350"
-                            height="250"
-                            layout="responsive"
-                            src={post?.featuredImage?.node?.sourceUrl}
-                            blurDataURL={`/_next/image?url=${post?.featuredImage?.node?.sourceUrl}&w=16&q=1`}
-                            placeholder="blur"
-                            loading="lazy"
-                          />}
+                          {post?.featuredImage && (
+                            <Image
+                              alt={
+                                post?.featuredImage?.node?.altText
+                                  ? post?.featuredImage?.node?.altText
+                                  : `صورة ل${post.title}`
+                              }
+                              width="350"
+                              height="250"
+                              layout="responsive"
+                              src={post?.featuredImage?.node?.sourceUrl}
+                              blurDataURL={`/_next/image?url=${post?.featuredImage?.node?.sourceUrl}&w=16&q=1`}
+                              placeholder="blur"
+                              loading="lazy"
+                            />
+                          )}
                         </div>
                         <h3 className={styles.relatedPostTitle}></h3>
                         {post.title}

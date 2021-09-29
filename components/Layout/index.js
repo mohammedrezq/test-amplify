@@ -23,6 +23,11 @@ const Layout = (props) => {
         <meta content={props.sitename} property="og:site_name" />
         <meta content={props.title} property="og:title" />
         <meta content={props.description} property="og:description" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@alyaliweb" />
+        <meta name="twitter:title" content={props.twitterTitle ? props.twitterTitle : props.title} />
+        <meta name="twitter:description" content={props.twitterDescription? props.twitterDescription : props.description} />
+        <meta name="twitter:image" content={props.twitterImage && props.twitterImage} />
       </Head>
 
       <div className={styles.layout}>
