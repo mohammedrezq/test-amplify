@@ -13,6 +13,20 @@ const Layout = (props) => {
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content={props.description} />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="icons/icon-128x128.png"></link>
+        <link
+          href="/icons/icon-128x128.png"
+          rel="icon"
+          type="image/png"
+          sizes="128x128"
+        />
+        <link
+          href="/icons/icon-512x512.png"
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+        />
         <title>{props.title}</title>
         <meta content="#fff" name="theme-color"/>
         <link href={props.url} rel="canonical" />
