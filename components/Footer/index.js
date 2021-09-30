@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 import styles from "./Footer.module.scss";
+import { FaFacebookF, FaTwitter } from "react-icons/fa";
+import { GrInstagram } from "react-icons/gr";
 
 const Footer = ({ latestPosts }) => {
   return (
@@ -21,8 +23,10 @@ const Footer = ({ latestPosts }) => {
             })}
           </div>
         )}
-        <div>
-          Hello
+        <div className={styles.socialMedia}>
+          <span className={styles.socialIcon}><a href="https://www.google.com"><FaTwitter size={25} /></a></span>
+          <span className={styles.socialIcon}><a href="https://www.google.com"><FaFacebookF size={25} /></a></span>
+          <span className={styles.socialIcon}><a href="https://www.google.com"><GrInstagram size={25} /></a></span>
         </div>
       </div>
       <div className={styles.lowerFooter}>

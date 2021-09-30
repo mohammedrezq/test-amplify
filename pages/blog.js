@@ -63,7 +63,6 @@ const Blog2 = ({ menus, settings, latestPosts } = porps) => {
     return <p>No posts have been published.</p>;
   }
 
-
   return (
     <Layout
       title={allSettings.generalSettingsTitle}
