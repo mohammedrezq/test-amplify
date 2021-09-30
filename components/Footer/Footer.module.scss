@@ -22,12 +22,19 @@
   }
 
   .socialMedia {
-    display: flex;
+    .socialContainer {
+      display: flex;
 
       .socialIcon {
-        width: 5rem;
-        text-align: center;
+        width: 3rem;
+
+        a {
+          &:hover {
+            color: lighten($dark, 30%);
+          }
+        }
       }
+    }
   }
 }
 /* Lower Footer */

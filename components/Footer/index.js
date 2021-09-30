@@ -24,9 +24,14 @@ const Footer = ({ latestPosts }) => {
           </div>
         )}
         <div className={styles.socialMedia}>
-          <span className={styles.socialIcon}><a href="https://www.google.com"><FaTwitter size={25} /></a></span>
-          <span className={styles.socialIcon}><a href="https://www.google.com"><FaFacebookF size={25} /></a></span>
-          <span className={styles.socialIcon}><a href="https://www.google.com"><GrInstagram size={25} /></a></span>
+          <h2>
+            التواصل معنا
+          </h2>
+          <div className={styles.socialContainer}>
+            <span className={styles.socialIcon}><a href="https://www.google.com"><FaTwitter size={25} /></a></span>
+            <span className={styles.socialIcon}><a href="https://www.google.com"><FaFacebookF size={25} /></a></span>
+            <span className={styles.socialIcon}><a href="https://www.google.com"><GrInstagram size={25} /></a></span>
+          </div>
         </div>
       </div>
       <div className={styles.lowerFooter}>
