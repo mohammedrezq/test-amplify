@@ -15,15 +15,18 @@ import Layout from "../components/Layout";
 
 import SkeletonContent from "../components/SkeletonContent/SkeletonContent";
 import { getSettings } from "../lib/api/getSettings";
+import { getLatestPosts } from "../lib/api/getLatestPosts";
 
 const POSTS_PER_PAGE = 6;
 
 let $hierarchicalList = [];
 
-const Blog2 = ({ menus, settings } = porps) => {
+const Blog2 = ({ menus, settings, latestPosts } = porps) => {
   const {
     data: { allSettings },
   } = settings;
+
+  const theLatestPosts = latestPosts.data.posts;
 
   $hierarchicalList = flatListToHierarchical(menus?.menu?.menuItems?.nodes);
   const { loading, error, data, fetchMore } = useQuery(GET_POSTS, {
@@ -60,7 +63,6 @@ const Blog2 = ({ menus, settings } = porps) => {
     return <p>No posts have been published.</p>;
   }
 
-
   return (
     <Layout
       title={allSettings.generalSettingsTitle}
@@ -69,6 +71,7 @@ const Blog2 = ({ menus, settings } = porps) => {
       url={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/blog`}
       type={`website`}
       menus={$hierarchicalList}
+      // latest={theLatestPosts}
     >
       <InfiniteScroll
         dataLength={posts.edges.length}
@@ -163,10 +166,15 @@ export async function getStaticProps(context) {
     query: getSettings,
   });
 
+  const latestPosts = await apolloClient.query({
+    query: getLatestPosts,
+  });
+
   return addApolloState(apolloClient, {
     props: {
       menus: data,
       settings,
+      latestPosts
     },
     revalidate: 60,
   });

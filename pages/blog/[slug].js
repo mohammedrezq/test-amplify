@@ -11,10 +11,11 @@ import { getPrimaryMenu } from "../../lib/api/getMenus";
 import Layout from "../../components/Layout";
 import { getSettings } from "../../lib/api/getSettings";
 import { getRelatedPosts } from "../../lib/utils/relatedPosts";
+import { getLatestPosts } from "../../lib/api/getLatestPosts";
 
 let $hierarchicalList = [];
 
-const Post = ({ post, menus, settings, relatedPosts } = props) => {
+const Post = ({ post, menus, settings, relatedPosts, latestPosts } = props) => {
   const { title } = post;
   const { featuredImage } = post;
   const { content } = post;
@@ -34,6 +35,8 @@ const Post = ({ post, menus, settings, relatedPosts } = props) => {
     menus?.data?.menu?.menuItems?.nodes
   );
 
+  const theLatestPosts = latestPosts.data.posts;
+
   return (
     <Layout
       title={ post?.seo?.title? post?.seo?.title : `${title} - ${allSettings.generalSettingsTitle}`}
@@ -43,6 +46,7 @@ const Post = ({ post, menus, settings, relatedPosts } = props) => {
       twitterImage={post?.seo?.twitterImage?.sourceUrl ? post?.seo?.twitterImage?.sourceUrl : featuredImage?.node?.sourceUrl}
       type={`article`}
       menus={$hierarchicalList}
+      // latest={theLatestPosts}
     >
       <div className={styles.blogPostContent}>
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
@@ -230,6 +234,10 @@ export async function getStaticProps(context) {
     query: getSettings,
   });
 
+  const latestPosts = await apolloClient.query({
+    query: getLatestPosts,
+  });
+
   return {
     props: {
       post: data?.post,
@@ -238,6 +246,7 @@ export async function getStaticProps(context) {
       relatedPosts: {
         posts: await getRelatedPosts(category, postId),
       },
+      latestPosts
     },
     revalidate: 60,
   };

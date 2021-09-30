@@ -81,7 +81,6 @@ const DropdownMobile = (props) => {
   return (
     <div>
       {props.menus.map((menu, index) => {
-          console.log(menu);
         const siteSubFolder = "newsite";
         const newPath = menu?.path
           .toLowerCase()
@@ -118,7 +117,6 @@ const DropdownMobile = (props) => {
                   .includes(siteSubFolder.toLowerCase())
                   ? menu?.path.replace("/newsite/", "")
                   : menu.path;
-                    // console.log(menu.title);
                      return( <div key={menu.id}>
                         <Link href={`/blog/${newPath}`}>
                           <a className={classes.childHrefColor} title={menu.title}>

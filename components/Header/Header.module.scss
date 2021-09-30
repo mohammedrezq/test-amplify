@@ -1,13 +1,14 @@
 @import '../../styles/variables';
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  background: $yellow;
+  background-color: inherit;
   color: $dark;
   padding: 2rem 1rem;
   // margin: 2rem 0;
-  display: flex;
-  align-items: center;
   height: 110px;
   
   .headerTitle {
@@ -28,13 +29,14 @@
     }
     
     a {
-      color: $blue;
+      color: inherit;
       text-decoration: none;
+      padding-bottom: 4px;
 
       &:hover,
       &:focus,
       &:active {
-        text-decoration: underline;
+        border-bottom: 1px solid $dark;
       }
     }
 

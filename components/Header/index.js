@@ -20,7 +20,6 @@ const Header = (props) => {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          // console.log("Outside Div Element");
           setSearch(false);
         }
       }
@@ -72,7 +71,7 @@ const Header = (props) => {
     <div style={{marginBottom: search && '80px', transition: 'all 200ms ease-out' }} className={styles.header}>
       <NavMobile menus={props.menus} />
       <div className={styles.headerTitle}>
-        <h1><Link href={'/'}>موقع لوز</Link></h1>
+        <h1><Link href={'/'}><a>{"موقع الليالي"}</a></Link></h1>
       </div>
       <Nav menus={props.menus} />
       <div className={styles.searchContainer} ref={searchRef}>

@@ -47,7 +47,7 @@ const Layout = (props) => {
       <div className={styles.layout}>
         <Header menus={props.menus} />
         <Main>{props.children}</Main>
-        <Footer />
+        <Footer latestPosts={props.latest} />
       </div>
     </>
   );
