@@ -10,7 +10,7 @@ import { GET_POSTS } from "../lib/api/getPaginatedPostsQuery";
 import { getPrimaryMenu } from "../lib/api/getMenus";
 import { flatListToHierarchical } from "../lib/utils/menus";
 import PostsContainer from "../components/PostsContainer";
-import styles from "./blog.module.scss";
+import styles from "./articles.module.scss";
 import Layout from "../components/Layout";
 
 import SkeletonContent from "../components/SkeletonContent/SkeletonContent";
@@ -21,7 +21,7 @@ const POSTS_PER_PAGE = 6;
 
 let $hierarchicalList = [];
 
-const Blog2 = ({ menus, settings, latestPosts } = porps) => {
+const Articles = ({ menus, settings, latestPosts } = porps) => {
   const {
     data: { allSettings },
   } = settings;
@@ -68,7 +68,7 @@ const Blog2 = ({ menus, settings, latestPosts } = porps) => {
       title={allSettings.generalSettingsTitle}
       description={allSettings.generalSettingsDescription}
       sitename={allSettings.generalSettingsTitle}
-      url={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/blog`}
+      url={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/articles`}
       type={`website`}
       menus={$hierarchicalList}
       // latest={theLatestPosts}
@@ -87,7 +87,7 @@ const Blog2 = ({ menus, settings, latestPosts } = porps) => {
             return (
               <div className={styles.blogContent} key={post.node.id}>
                 <div className={styles.blogPostImage}>
-                  <Link href={`/blog/${post.node.slug}`}>
+                  <Link href={`/article/${post.node.slug}`}>
                     <a>
                       {featuredImage && (
                         <Image
@@ -123,7 +123,7 @@ const Blog2 = ({ menus, settings, latestPosts } = porps) => {
                   </div>
                   <div className={styles.blogPostsDescription}>
                     <div className={styles.blogPostTitle}>
-                      <Link href={`/blog/${post.node.slug}`}>
+                      <Link href={`/article/${post.node.slug}`}>
                         <a>
                           <h1>{post.node.title}</h1>
                         </a>
@@ -145,7 +145,7 @@ const Blog2 = ({ menus, settings, latestPosts } = porps) => {
   );
 };
 
-export default Blog2;
+export default Articles;
 
 export async function getStaticProps(context) {
   const apolloClient = initializeApollo();

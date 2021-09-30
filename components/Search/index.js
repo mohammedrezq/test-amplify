@@ -42,7 +42,7 @@ export const SearchREST = () => {
           const URLslug = splittedUrl.slice(i)[0];
           return (
             <div key={post.id}>
-              <Link href={`/blog/${URLslug}`}>{post.title}</Link>
+              <Link href={`/article/${URLslug}`}>{post.title}</Link>
             </div>
           );
         })}
@@ -128,7 +128,7 @@ export const SearchGraphQL = () => {
             value.length > 2 &&
             posts.edges.map((post, index) => {
               return (
-                <Link key={post.node.id} href={`/blog/${post.node.slug}`}>
+                <Link key={post.node.id} href={`/article/${post.node.slug}`}>
                   <div className={styles.searchResult} key={post.node.id}>
                     {post.node.title}
                   </div>

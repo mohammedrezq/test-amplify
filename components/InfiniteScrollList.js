@@ -83,7 +83,7 @@ export default function InfiniteScrollList() {
               marginBottom: "1rem",
             }}
           >
-            <Link href={`/blog/${slug}`}>
+            <Link href={`/article/${slug}`}>
               <a>
                 {post?.featuredImage && (
                   <Image
@@ -99,7 +99,7 @@ export default function InfiniteScrollList() {
                 )}
               </a>
             </Link>
-            <Link href={`/blog/${slug}`}>
+            <Link href={`/article/${slug}`}>
               <a>
                 <h1>{title}</h1>
               </a>
