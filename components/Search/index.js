@@ -20,7 +20,7 @@ export const SearchREST = () => {
     );
     response = await response.json();
     setPosts(response);
-  },[]);
+  }, []);
 
   useEffect(() => {
     onSubmitHandler();
@@ -119,8 +119,18 @@ export const SearchGraphQL = () => {
 
   return (
     <div className={styles.searchContainer}>
-      <input autoFocus type="text" role="search" className={styles.searchBox} onClick={clickHandler} onChange={onChangeHandler} value={value} />
-      <button className={styles.searchSubmitBtn}><BsSearch size={32} color={"#ddd"}/></button>
+      <input
+        autoFocus
+        type="text"
+        role="search"
+        className={styles.searchBox}
+        onClick={clickHandler}
+        onChange={onChangeHandler}
+        value={value}
+      />
+      <button className={styles.searchSubmitBtn}>
+        <BsSearch size={32} color={"#ddd"} />
+      </button>
       {/**Posts */}
       {loadPosts && posts.edges && posts.edges.length > 0 && (
         <div ref={divRef} className={styles.searchResultsContainer}>
@@ -129,9 +139,11 @@ export const SearchGraphQL = () => {
             posts.edges.map((post, index) => {
               return (
                 <Link key={post.node.id} href={`/article/${post.node.slug}`}>
-                  <div className={styles.searchResult} key={post.node.id}>
-                    {post.node.title}
-                  </div>
+                  <a>
+                    <div className={styles.searchResult} key={post.node.id}>
+                      {post.node.title}
+                    </div>
+                  </a>
                 </Link>
               );
             })}
