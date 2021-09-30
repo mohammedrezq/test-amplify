@@ -61,7 +61,6 @@ export default function InfiniteScrollList() {
   const posts = data.posts.edges.map((edge) => edge.node);
   const haveMorePosts = Boolean(data.posts?.pageInfo?.hasNextPage);
 
-  // console.log(posts);
   return (
     <InfiniteScroll
       dataLength={posts.length}
@@ -73,7 +72,6 @@ export default function InfiniteScrollList() {
       {posts.map((post) => {
         const { databaseId, title, slug, id, uri, excerpt } =
           post;
-        // console.log(post?.featuredImage?.node?.sourceUrl);
         return (
           <li
             key={databaseId}

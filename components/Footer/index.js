@@ -1,13 +1,35 @@
-import React from 'react'
-import styles from './Footer.module.scss';
+import React from "react";
+import Link from "next/link";
 
-const Footer = () => {
-    return (
-        <div className={styles.footer}>
-            Footer
-            <h1>Footer</h1>
+import styles from "./Footer.module.scss";
+
+const Footer = ({ latestPosts }) => {
+  return (
+    <>
+      <div className={styles.footerContainer}>
+        {latestPosts && (
+          <div className={styles.latestPostsFooter}>
+            {latestPosts?.edges?.length > 0 && <h2>أحدث المواضيع</h2>}
+            {latestPosts?.edges.map((post, index) => {
+              return (
+                <div key={post.node.id}>
+                  <Link href={`/blog/${post.node.slug}`}>
+                    <a>{post.node.title}</a>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        )}
+        <div>
+          Hello
         </div>
-    )
-}
+      </div>
+      <div className={styles.lowerFooter}>
+        جميع الحقوق محفوظة لموقع الليالي &copy; {new Date().getFullYear()}
+      </div>
+    </>
+  );
+};
 
-export default Footer
+export default Footer;

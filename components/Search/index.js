@@ -61,7 +61,6 @@ export const SearchGraphQL = () => {
   const useOutsideElem = (ref) => {
     useEffect(() => {
       function handleClickOutside(event) {
-        // console.log(ref.current);
         if (ref.current && !ref.current.contains(event.target)) {
           setLoadPosts(false);
         }
