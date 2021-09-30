@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PostsContainer from "../../components/PostsContainer";
 
-import styles from "../blog/blog.module.scss";
+import styles from "../article/article.module.scss";
 
 import { flatListToHierarchical } from "../../lib/utils/menus";
 import { getPrimaryMenu } from "../../lib/api/getMenus";
@@ -28,7 +28,7 @@ const Tag = ({ tag, menus } = props) => {
 
           return (
             <div className={styles.blogContent} key={post.node.id}>
-              <Link href={`/blog/${post?.node?.slug}`}>
+              <Link href={`/article/${post?.node?.slug}`}>
                 <a>
                   {featuredImage && (
                     <Image
@@ -44,7 +44,7 @@ const Tag = ({ tag, menus } = props) => {
                   )}
                 </a>
               </Link>
-              <Link href={`/blog/${post?.node?.slug}`}>
+              <Link href={`/article/${post?.node?.slug}`}>
                 <a>
                   <h1>{post?.node?.title}</h1>
                 </a>

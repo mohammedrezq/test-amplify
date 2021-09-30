@@ -107,7 +107,7 @@ const Header = (props) => {
                       </button>
                   </>
                 )}
-                    <Link href={`/blog/${newPath}`}>
+                    <Link href={`/article/${newPath}`}>
                       <a title={menu.title}>{menu.label}</a>
                     </Link>
               </div>
@@ -117,7 +117,7 @@ const Header = (props) => {
                   {menu.children.map(({id, path, label, title}) => {
                   return (
                     <li key={id}>
-                        <Link href={`/blog/${newPath}`}>
+                        <Link href={`/article/${newPath}`}>
                         <a title={menu.title}>{menu.label}</a>
                         </Link>
                     </li>

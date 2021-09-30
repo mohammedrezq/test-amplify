@@ -92,7 +92,7 @@ const DropdownMobile = (props) => {
             <Accordion key={index} className={`${classes.expanded} ${classes.backgroundColorAccordion}  ${classes.accordionBorderRadius}`}>
              <AccordionSummary expandIcon={menu.children?.length > 0 ? <ExpandMoreIcon /> : null} aria-controls="panel1a-content" id="panel1a-header">
               <div className={classes.heading}>
-                <Link href={`/blog/${newPath}`}>
+                <Link href={`/article/${newPath}`}>
                   <a className={classes.hrefColor} title={menu.title}>
                     {menu.label}
                   </a>
@@ -100,7 +100,7 @@ const DropdownMobile = (props) => {
 
                 {/* <a
                   className={classes.hrefColor}
-                  href={`/blog/${newPath}`}
+                  href={`/article/${newPath}`}
                   title={menu.title}
                 //   target={target}
                 >
@@ -118,7 +118,7 @@ const DropdownMobile = (props) => {
                   ? menu?.path.replace("/newsite/", "")
                   : menu.path;
                      return( <div key={menu.id}>
-                        <Link href={`/blog/${newPath}`}>
+                        <Link href={`/article/${newPath}`}>
                           <a className={classes.childHrefColor} title={menu.title}>
                             {menu.label}
                           </a>
@@ -126,7 +126,7 @@ const DropdownMobile = (props) => {
 
                         {/* <a
                           className={classes.childHrefColor}
-                          href={`/blog/${newPath}`}
+                          href={`/article/${newPath}`}
                           title={menu.title}
                         //   target={target}
                         >

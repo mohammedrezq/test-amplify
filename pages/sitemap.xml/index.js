@@ -11,7 +11,7 @@ const sitemapXML = (data) => {
       latestPost = postDate;
     }
 
-    const projectURL = `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/blog/${post.node.slug}/`;
+    const projectURL = `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/article/${post.node.slug}/`;
     projectsXML += `
       <url>
         <loc>${projectURL}</loc>
@@ -31,7 +31,7 @@ const sitemapXML = (data) => {
         <priority>1.00</priority>
       </url>
       <url>
-        <loc>${process.env.NEXT_PUBLIC_WORDPRESS_URL}/blog/</loc>
+        <loc>${process.env.NEXT_PUBLIC_WORDPRESS_URL}/articles/</loc>
         <priority>1.00</priority>
       </url>
       ${projectsXML}

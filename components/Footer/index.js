@@ -15,7 +15,7 @@ const Footer = ({ latestPosts }) => {
             {latestPosts?.edges.map((post, index) => {
               return (
                 <div key={post.node.id}>
-                  <Link href={`/blog/${post.node.slug}`}>
+                  <Link href={`/article/${post.node.slug}`}>
                     <a>{post.node.title}</a>
                   </Link>
                 </div>

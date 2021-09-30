@@ -9,7 +9,7 @@ import { getPrimaryMenu } from "../../lib/api/getMenus";
 import PostsContainer from "../../components/PostsContainer";
 import Layout from "../../components/Layout";
 
-import styles from "../blog/blog.module.scss";
+import styles from "../article/article.module.scss";
 import categoryStyles from "./category.module.scss";
 import { flatListToHierarchical } from "../../lib/utils/menus";
 
@@ -34,7 +34,7 @@ const Category = ({ category, menus } = props) => {
 
           return (
             <div className={styles.blogContent} key={post?.node?.id}>
-              <Link href={`/blog/${post?.node?.slug}`}>
+              <Link href={`/article/${post?.node?.slug}`}>
                 <a>
                   {featuredImage && (
                     <Image
@@ -50,7 +50,7 @@ const Category = ({ category, menus } = props) => {
                   )}
                 </a>
               </Link>
-              <Link href={`/blog/${post?.node?.slug}`}>
+              <Link href={`/article/${post?.node?.slug}`}>
                 <a>
                   <h1>{post.node.title}</h1>
                 </a>

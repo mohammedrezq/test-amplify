@@ -1,5 +1,5 @@
-## Luz Project
-Blog
+## Alyali Project
+Articles
 
 Main Page
 

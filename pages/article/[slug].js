@@ -4,7 +4,7 @@ import { gql } from "@apollo/client";
 
 import { initializeApollo } from "../../services/apollo";
 import { getPostBySlug } from "../../lib/api/getPostBySlug";
-import styles from "./blog.module.scss";
+import styles from "./article.module.scss";
 
 import { flatListToHierarchical } from "../../lib/utils/menus";
 import { getPrimaryMenu } from "../../lib/api/getMenus";
@@ -42,7 +42,7 @@ const Post = ({ post, menus, settings, relatedPosts, latestPosts } = props) => {
       title={ post?.seo?.title? post?.seo?.title : `${title} - ${allSettings.generalSettingsTitle}`}
       description={post?.seo?.metaDesc ? post?.seo?.metaDesc : title}
       sitename={allSettings.generalSettingsTitle}
-      url={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/blog/${post.slug}`}
+      url={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/artilce/${post.slug}`}
       twitterImage={post?.seo?.twitterImage?.sourceUrl ? post?.seo?.twitterImage?.sourceUrl : featuredImage?.node?.sourceUrl}
       type={`article`}
       menus={$hierarchicalList}
@@ -119,7 +119,7 @@ const Post = ({ post, menus, settings, relatedPosts, latestPosts } = props) => {
               {relatedPosts.posts.map((post, index) => {
                 return (
                   <div className={styles.relatedPost} key={post.databaseId}>
-                    <Link href={`/blog/${post.slug}`} passHref>
+                    <Link href={`/article/${post.slug}`} passHref>
                       <a>
                         <div className={styles.relatedPostImage}>
                           {post?.featuredImage && (
@@ -153,7 +153,7 @@ const Post = ({ post, menus, settings, relatedPosts, latestPosts } = props) => {
       <div className={styles.postPagination}>
         {next ? (
           <>
-            <Link href={`/blog/${next.slug}`}>
+            <Link href={`/article/${next.slug}`}>
               <a className={styles.next}>
                 <span className={styles.nextHead}>السابق: </span>
                 <div className={styles.nextUrl}>
@@ -166,7 +166,7 @@ const Post = ({ post, menus, settings, relatedPosts, latestPosts } = props) => {
         ) : null}
         {previous ? (
           <>
-            <Link href={`/blog/${previous.slug}`}>
+            <Link href={`/article/${previous.slug}`}>
               <a className={styles.previous}>
                 <span className={styles.previousHead}>التالي: </span>
                 <div className={styles.previousUrl}>

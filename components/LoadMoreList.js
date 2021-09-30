@@ -59,7 +59,7 @@ export default function LoadMoreList() {
                 marginBottom: "1rem",
               }}
             >
-              <Link href={`/blog/${slug}`}>
+              <Link href={`/article/${slug}`}>
                 <a>{title}</a>
               </Link>
             </li>
