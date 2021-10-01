@@ -143,9 +143,9 @@ const Post = ({ post, menus, settings, relatedPosts, latestPosts } = props) => {
                               width="350"
                               height="250"
                               layout="responsive"
-                              src={featuredImage?.node?.sourceUrl}
-                              srcSet={featuredImage?.node?.srcSet}
-                              blurDataURL={`/_next/image?url=${featuredImage?.node?.sourceUrl}&w=16&q=1`}
+                              src={post?.featuredImage?.node?.sourceUrl}
+                              srcSet={post?.featuredImage?.node?.srcSet}
+                              blurDataURL={`/_next/image?url=${post?.featuredImage?.node?.sourceUrl}&w=16&q=1`}
                               placeholder="blur"
                               loading="lazy"
                             />
