@@ -90,10 +90,15 @@ const Articles = ({ menus, settings, latestPosts } = porps) => {
                   <Link href={`/article/${post.node.slug}`}>
                     <a>
                       {featuredImage && (
-                        <img
+                        <Image
                           alt={post?.featuredImage?.node?.altText ? post?.featuredImage?.node?.altText : `صورة ل${[post.node.title]}` }
+                          width="350"
+                          height="250"
+                          layout="responsive"
                           src={featuredImage?.node?.sourceUrl}
                           srcSet={featuredImage?.node?.srcSet}
+                          blurDataURL={`/_next/image?url=${featuredImage?.node?.sourceUrl}&w=16&q=1`}
+                          placeholder="blur"
                           loading="lazy"
                         />
                       )}

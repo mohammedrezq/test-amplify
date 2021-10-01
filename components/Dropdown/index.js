@@ -58,7 +58,7 @@ const Dropdown = (props) => {
                       </button>
                   </>
                 )}
-                    <Link href={`/article/${newPath}`}>
+                    <Link href={`/article${newPath}`}>
                       <a title={menu.title}>{menu.label}</a>
                     </Link>
               </div>
@@ -74,7 +74,7 @@ const Dropdown = (props) => {
                         : menu.path;
                   return (
                     <li key={menu.id}>
-                        <Link href={`/article/${newPath}`}>
+                        <Link href={`/article${newPath}`}>
                         <a title={menu.title}>{menu.label}</a>
                         </Link>
                     </li>

@@ -70,8 +70,7 @@ export default function InfiniteScrollList() {
       endMessage={<p>✅ All posts loaded.</p>}
     >
       {posts.map((post) => {
-        const { databaseId, title, slug, id, uri, excerpt } =
-          post;
+        const { databaseId, title, slug, id, uri, excerpt } = post;
         return (
           <li
             key={databaseId}
@@ -86,10 +85,19 @@ export default function InfiniteScrollList() {
             <Link href={`/article/${slug}`}>
               <a>
                 {post?.featuredImage && (
-                  <img
-                    alt={post?.featuredImage?.node?.altText ? post?.featuredImage?.node?.altText : `صورة ل${title}` }
+                  <Image
+                    alt={
+                      post?.featuredImage?.node?.altText
+                        ? post?.featuredImage?.node?.altText
+                        : `صورة ل${title}`
+                    }
+                    width="350"
+                    height="250"
+                    layout="responsive"
                     src={post?.featuredImage?.node?.sourceUrl}
                     srcSet={post?.featuredImage?.node?.srcSet}
+                    blurDataURL={`/_next/image?url=${post?.featuredImage?.node?.sourceUrl}&w=16&q=1`}
+                    placeholder="blur"
                     loading="lazy"
                   />
                 )}

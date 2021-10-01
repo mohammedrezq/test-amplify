@@ -7,7 +7,7 @@ import PostsContainer from "../../components/PostsContainer";
 
 import styles from "../article/article.module.scss";
 
-import tagStyles from './tag.module.scss';
+import tagStyles from "./tag.module.scss";
 
 import { flatListToHierarchical } from "../../lib/utils/menus";
 import { getPrimaryMenu } from "../../lib/api/getMenus";
@@ -40,14 +40,19 @@ const Tag = ({ tag, menus } = props) => {
                 <Link href={`/article/${post?.node?.slug}`}>
                   <a>
                     {featuredImage && (
-                      <img
+                      <Image
                         alt={
                           post?.featuredImage?.node?.altText
                             ? post?.featuredImage?.node?.altText
                             : `image for: ${post.node.title}`
                         }
-                        src={featuredImage?.node?.sourceUrl}
+                        width="350"
+                        height="250"
                         srcSet={featuredImage?.node?.srcSet}
+                        layout="responsive"
+                        src={featuredImage?.node?.sourceUrl}
+                        blurDataURL={`/_next/image?url=${featuredImage?.node?.sourceUrl}&w=16&q=1`}
+                        placeholder="blur"
                         loading="lazy"
                       />
                     )}
