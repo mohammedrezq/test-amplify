@@ -86,14 +86,10 @@ export default function InfiniteScrollList() {
             <Link href={`/article/${slug}`}>
               <a>
                 {post?.featuredImage && (
-                  <Image
+                  <img
                     alt={post?.featuredImage?.node?.altText ? post?.featuredImage?.node?.altText : `صورة ل${title}` }
-                    width="350"
-                    height="250"
-                    layout="responsive"
                     src={post?.featuredImage?.node?.sourceUrl}
-                    blurDataURL={`/_next/image?url=${post?.featuredImage?.node?.sourceUrl}&w=16&q=1`}
-                    placeholder="blur"
+                    srcSet={post?.featuredImage?.node?.srcSet}
                     loading="lazy"
                   />
                 )}

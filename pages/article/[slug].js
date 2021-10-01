@@ -39,11 +39,19 @@ const Post = ({ post, menus, settings, relatedPosts, latestPosts } = props) => {
 
   return (
     <Layout
-      title={ post?.seo?.title? post?.seo?.title : `${title} - ${allSettings.generalSettingsTitle}`}
+      title={
+        post?.seo?.title
+          ? post?.seo?.title
+          : `${title} - ${allSettings.generalSettingsTitle}`
+      }
       description={post?.seo?.metaDesc ? post?.seo?.metaDesc : title}
       sitename={allSettings.generalSettingsTitle}
       url={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/artilce/${post.slug}`}
-      twitterImage={post?.seo?.twitterImage?.sourceUrl ? post?.seo?.twitterImage?.sourceUrl : featuredImage?.node?.sourceUrl}
+      twitterImage={
+        post?.seo?.twitterImage?.sourceUrl
+          ? post?.seo?.twitterImage?.sourceUrl
+          : featuredImage?.node?.sourceUrl
+      }
       type={`article`}
       menus={$hierarchicalList}
       // latest={theLatestPosts}
@@ -51,20 +59,18 @@ const Post = ({ post, menus, settings, relatedPosts, latestPosts } = props) => {
       <div className={styles.blogPostContent}>
         <h1 dangerouslySetInnerHTML={{ __html: title }} />
         {featuredImage && (
-          <Image
-            alt={
-              post?.featuredImage?.node?.altText
-                ? post?.featuredImage?.node?.altText
-                : `ـ صورة لـ Image For ${title}`
-            }
-            width="350"
-            height="250"
-            layout="responsive"
-            src={featuredImage?.node?.sourceUrl}
-            blurDataURL={`/_next/image?url=${featuredImage?.node?.sourceUrl}&w=16&q=1`}
-            placeholder="blur"
-            loading="lazy"
-          />
+          <div className={styles.featuredImageContainer}>
+            <img
+              alt={
+                post?.featuredImage?.node?.altText
+                  ? post?.featuredImage?.node?.altText
+                  : `ـ صورة لـ Image For ${title}`
+              }
+              src={featuredImage?.node?.sourceUrl}
+              srcSet={featuredImage?.node?.srcSet}
+              loading="lazy"
+            />
+          </div>
         )}
         <div className={styles.postHeader}>
           <div className={styles.categoryContainer}>
@@ -83,7 +89,7 @@ const Post = ({ post, menus, settings, relatedPosts, latestPosts } = props) => {
               })}
           </div>
           <div className={styles.dateContainer}>
-            آخر تحديث: 
+            آخر تحديث:
             <span>{postDate}</span>
           </div>
         </div>
@@ -123,18 +129,14 @@ const Post = ({ post, menus, settings, relatedPosts, latestPosts } = props) => {
                       <a>
                         <div className={styles.relatedPostImage}>
                           {post?.featuredImage && (
-                            <Image
+                            <img
                               alt={
                                 post?.featuredImage?.node?.altText
                                   ? post?.featuredImage?.node?.altText
                                   : `صورة ل${post.title}`
                               }
-                              width="350"
-                              height="250"
-                              layout="responsive"
                               src={post?.featuredImage?.node?.sourceUrl}
-                              blurDataURL={`/_next/image?url=${post?.featuredImage?.node?.sourceUrl}&w=16&q=1`}
-                              placeholder="blur"
+                              srcSet={post?.featuredImage?.node?.srcset}
                               loading="lazy"
                             />
                           )}
@@ -246,7 +248,7 @@ export async function getStaticProps(context) {
       relatedPosts: {
         posts: await getRelatedPosts(category, postId),
       },
-      latestPosts
+      latestPosts,
     },
     revalidate: 60,
   };

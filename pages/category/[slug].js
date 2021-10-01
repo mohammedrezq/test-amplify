@@ -18,38 +18,48 @@ let $hierarchicalList = [];
 const Category = ({ category, menus } = props) => {
   const { posts } = category;
 
-  $hierarchicalList = flatListToHierarchical(menus?.data?.menu?.menuItems?.nodes);
+  $hierarchicalList = flatListToHierarchical(
+    menus?.data?.menu?.menuItems?.nodes
+  );
 
   return (
-    <Layout  title={`${category.name}`}
-    description={`${
-      category?.description ? category?.description : category?.name
-    }`} menus={$hierarchicalList}>
-      
-    <h1 className={categoryStyles.categoryHeader}>{category.name}</h1>
-    {category?.description &&<div className={categoryStyles.categoryDescription}>{category?.description}</div>}
+    <Layout
+      title={`${category.name}`}
+      description={`${
+        category?.description ? category?.description : category?.name
+      }`}
+      menus={$hierarchicalList}
+    >
+      <h1 className={categoryStyles.categoryHeader}>{category.name}</h1>
+      {category?.description && (
+        <div className={categoryStyles.categoryDescription}>
+          {category?.description}
+        </div>
+      )}
       <PostsContainer>
         {posts.edges.map((post) => {
           const { featuredImage } = post.node;
 
           return (
-            <div className={styles.blogContent} key={post?.node?.id}>
-              <Link href={`/article/${post?.node?.slug}`}>
-                <a>
-                  {featuredImage && (
-                    <Image
-                      alt={post?.featuredImage?.node?.altText ? post?.featuredImage?.node?.altText : `صورة ل${post.node.title}` }
-                      width="350"
-                      height="250"
-                      layout="responsive"
-                      src={featuredImage?.node?.sourceUrl}
-                      blurDataURL={`/_next/image?url=${featuredImage?.node?.sourceUrl}&w=16&q=1`}
-                      placeholder="blur"
-                      loading="lazy"
-                    />
-                  )}
-                </a>
-              </Link>
+            <div className={categoryStyles.blogContent} key={post?.node?.id}>
+              <div className={categoryStyles.blogPostImage}>
+                <Link href={`/article/${post?.node?.slug}`}>
+                  <a>
+                    {featuredImage && (
+                      <img
+                        alt={
+                          post?.featuredImage?.node?.altText
+                            ? post?.featuredImage?.node?.altText
+                            : `صورة ل${post.node.title}`
+                        }
+                        src={featuredImage?.node?.sourceUrl}
+                        srcSet={featuredImage?.node?.srcSet}
+                        loading="lazy"
+                      />
+                    )}
+                  </a>
+                </Link>
+              </div>
               <Link href={`/article/${post?.node?.slug}`}>
                 <a>
                   <h1>{post.node.title}</h1>
